@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title> Где ударение? </title>
+      <style>
+      .game
+{ border: solid 6px #277f9c;
+  border-radius: 50px;
+  max-width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 1%;
+     }
+
+
+body {
+    font: 17px "Proxima Nova";
+    height: 100%;
+    min-width: 980px;}
+
+input, label, button
+{
+  font-size: 2em; }
+
+  .word
+{ height: 42px;
+padding: 9px 18px 7px;
+cursor: pointer;
+color: #fff;
+border: none;
+border-radius: 4px;
+outline: none;
+background: #277f9c;
+box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.2), inset 0 0 0 1px rgba(0,0,0,0.10);
+text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+font-family: 'Proxima Nova','Arial','Helvetica Neue',sans-serif;
+font-size: 18px;
+font-weight: 600;
+line-height: 17px;
+margin-bottom: 20px; }
+
+.word:hover { text-shadow:  3px 3px rgba(0,0,0,0.7);
+}
+
+.stgame {height: 42px;
+padding: 9px 18px 7px;
+cursor: pointer;
+color: #fff;
+border: none;
+border-radius: 4px;
+outline: none;
+background: #277f9c;
+box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.2), inset 0 0 0 1px rgba(0,0,0,0.10);
+text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+font-family: 'Proxima Nova','Arial','Helvetica Neue',sans-serif;
+font-size: 18px;
+font-weight: 600;
+line-height: 17px;
+margin-bottom: 20px; }
+
+.stgame:hover {box-shadow: 3px 3px rgba(0,0,0,0.7)} 
+
+
+.show {
+display: block;
+}
+.hidden {
+display: none;
+
+      </style>
+      
+      <script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script>
+function startGame() {
+
+$('#start').css('display','none');
+$('#q1').css('display','block');
+$('#q4').css('display','none');
+ test.count = 0; 
+
+};
+
+function test(result, qnumber) {
+
+if( typeof test.count == 'undefined' ) {
+test.count = 0;
+}
+
+if (result) {test.count++;}
+
+$('#q'+qnumber).css('display','none');
+$('#q'+ (qnumber+1)).css('display','block');
+
+if (qnumber==5) {$('#end').text(test.count);}
+
+console.log(test.count);
+}
+
+
+</script>
+
+      </head>
+
+
+    <body>
+
+      <div class="parent" id="start">
+<div class="child">
+      <div class="game">
+
+  <h1>Как думаешь, хорошо ли ты знаешь ударения?</h1>
+
+  <button class="stgame" onclick="startGame()"> Узнать! </button>
+
+</div>
+</div>
+</div>
+
+      <div class="parent hidden" id="q1">
+<div class="child">
+      <div class="game">
+
+  <h1>Как правильно?</h1>
+
+  <button class="word" onclick='test(true, 1)'> каталОг </button> или
+  <button class="word" onclick='test(false, 1)'> катАлог </button>
+
+</div>
+</div>
+</div>
+<div class="parent hidden" id="q2">
+<div class="child">
+  <div class="game">
+
+  <h1>Как правильно?</h1>
+
+  <button class="word" onclick='test(true, 2)'> крАны </button> или
+  <button class="word" onclick='test(false, 2)'> кранЫ </button>
+
+</div>
+</div>
+</div>
+<div class="parent hidden" id="q3">
+<div class="child">
+  <div class="game">
+
+  <h1>Как правильно?</h1>
+
+    <button class="word" onclick='test(true, 3)'> бАнты </button> или
+  <button class="word" onclick='test(false, 3)'> бантЫ </button>
+</div>
+</div>
+</div>
+      
+      <div class="parent hidden" id="q4">
+<div class="child">
+      <div class="game">
+
+  <h1>Как правильно?</h1>
+
+  <button class="word" onclick='test(false, 4)'> ходатАйство </button> или
+  <button class="word" onclick='test(true, 4)'> ходАтайство </button>
+
+</div>
+</div>
+</div>
+      
+           <div class="parent hidden" id="q5">
+<div class="child">
+      <div class="game">
+
+  <h1>Как правильно?</h1>
+
+  <button class="word" onclick='test(false, 5)'> икОнопись </button> или
+  <button class="word" onclick='test(true, 5)'> Иконопись </button>
+
+</div>
+</div>
+</div>
+
+  <div class="parent hidden" id="q6">
+<div class="child">
+<div class="game">
+<h1>Результат:</h1>
+  <p > Из пяти баллов ты набрал: </p>
+<p id='end'> </p>
+<button class="stgame" onclick="startGame()">Сыграть еще раз</button>
+
+
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
